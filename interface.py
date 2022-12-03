@@ -5,16 +5,16 @@ mobile_acc_link = {}            # use mobile no. as key and store account no. as
 
 def new_cust():
     name = input('Enter the name of customer: ')
-    mobile_no = int(input('Enter the mobile number of customer: '))
-    initial_depo = int(input('Enter the initial deposit amount: '))
+    mobile_no = int(input('\nEnter the mobile number of customer: '))
+    initial_depo = int(input('\nEnter the initial deposit amount: '))
     if initial_depo <= 0:
-        print('Invalid Amount')
+        print('\nInvalid Amount')
         return
-    pin = int(input('Create PIN: '))
+    pin = int(input('\nCreate PIN: '))
     customer = BankAccount(name=name, mobile_no=mobile_no, initial_depo=initial_depo, pin=pin)
     customer_dict[customer.cust_acc_num] = customer                 # acct. no. stored as key and oject as value
     mobile_acc_link[customer.mobile_no] = customer.cust_acc_num     # mobile no. linked
-    print('New User Created!')
+    print('\nNew User Created!')
     print(f'Welcome {customer.name} to JCMR Bank. {customer.cust_acc_num} is your account number')
 
 def login():
@@ -41,12 +41,12 @@ Press 4 to log out\n''')
                 secondary = mobile_acc_link[mobile]             # use mobile no. to get acct. no.
                 customer_dict[account_no].payment(customer_dict[secondary])
             else:
-                print('The mobile number you have enter does not have an account associated with it')
+                print('\nThe mobile number you have enter does not have an account associated with it!')
         elif user_input1 == '4':
             print('Logged Out')
             return
         else:
-            print('Invalid input try again')
+            print('Invalid input try again!')
         print('\n#############################################################\n')
         customer_dict[account_no].basic_details()
 
